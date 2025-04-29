@@ -9,9 +9,6 @@ services:
       - backend/.env
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/app
-      - ./backend/uploads:/app/uploads
     depends_on:
       db:
         condition: service_healthy
@@ -24,9 +21,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
     depends_on:
@@ -40,8 +34,6 @@ services:
       - "5433:5432"
     env_file:
       - backend/.env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     networks:
       - app-network
     healthcheck:
@@ -49,10 +41,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
-volumes:
-  postgres_data:
-  uploads:
 
 networks:
   app-network:
