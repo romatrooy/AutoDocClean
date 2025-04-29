@@ -9,6 +9,9 @@ RUN apt-get update && \
 # Создание директории для SSL
 RUN mkdir -p /etc/nginx/ssl
 
+# Копирование файлов конфигурации
+COPY default.conf /etc/nginx/conf.d/default.conf
+
 # Скрипт для генерации SSL-сертификата и запуска Nginx
 RUN echo '#!/bin/bash \n\
 if [ ! -f /etc/nginx/ssl/nginx.key ]; then \n\
