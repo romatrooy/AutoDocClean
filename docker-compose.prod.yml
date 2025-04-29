@@ -12,7 +12,7 @@ services:
       - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-      - GOOGLE_REDIRECT_URI=https://${DOMAIN}/auth/callback
+      - GOOGLE_REDIRECT_URI=http://${DOMAIN}/auth/callback
     depends_on:
       - db
     networks:
@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile.prod
     restart: always
     environment:
-      - NEXT_PUBLIC_API_URL=https://${DOMAIN}/api/v1
+      - NEXT_PUBLIC_API_URL=http://${DOMAIN}/api/v1
     depends_on:
       - backend
     networks:
@@ -46,16 +46,15 @@ services:
       retries: 5
 
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+    image: nginx:latest
     restart: always
     ports:
       - "80:80"
-      - "443:443"
     depends_on:
       - backend
       - frontend
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - app-network
 
