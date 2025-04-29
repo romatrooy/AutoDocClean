@@ -1,0 +1,16 @@
+This is a Word document and cannot be edited directly as text. You can add or modify variables here to update the template metadata.
+
+Current variables:
+##email_заказчика##
+##имя_директора##
+##телефон_исполнителя##
+##основание_представителя##
+##сумма##
+##email_исполнителя##
+##имя_представителя##
+##сумма_прописью##
+##название_клиента##
+##номер_договора##
+##телефон_заказчика##
+##дата_договора##
+##sdfsdfdf##

@@ -1,0 +1,36 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Установка системных зависимостей
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    python3-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    zlib1g-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Обновляем pip и устанавливаем инструменты сборки
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir wheel setuptools build
+
+# Установка python-docx отдельно
+RUN pip install python-docx==0.8.11
+
+# Копируем только requirements.txt сначала
+COPY requirements.txt .
+
+# Установка зависимостей
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копируем остальной код
+COPY . .
+
+# Добавляем текущую директорию в PYTHONPATH
+ENV PYTHONPATH=/app
+
+# Добавляем ожидание базы данных и применение миграций
+CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"]

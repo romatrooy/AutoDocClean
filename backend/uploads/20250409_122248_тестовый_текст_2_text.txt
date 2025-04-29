@@ -1,0 +1,49 @@
+This is a preview of the Word document content. When you save, a new text template will be created that you can fully edit.
+
+You can add or modify variables using ##variable_name## syntax.
+
+--- DOCUMENT CONTENT ---
+
+ДОГОВОР ОКАЗАНИЯ УСЛУГ №##номер_договора##
+
+г. Москва                                                                                   ##дата_договора##
+
+ООО "Компания", в лице генерального директора ##имя_директора##, действующего на основании Устава, 
+
+именуемое в дальнейшем "Исполнитель", с одной стороны,
+
+и ##название_клиента##, в лице ##имя_представителя##, действующего на основании ##основание_представителя##, 
+
+именуемое в дальнейшем "Заказчик", с другой стороны,
+
+заключили настоящий Договор о нижеследующем:
+
+1. ПРЕДМЕТ ДОГОВОРА
+
+1.1. Стоимость услуг составляет ##сумма## (##сумма_прописью##) рублей.
+
+2. РЕКВИЗИТЫ СТОРОН
+
+Исполнитель:
+
+Email: ##email_исполнителя##
+
+Телефон: ##телефон_исполнителя##
+
+Заказчик:
+
+Email: ##email_заказчика##
+
+Телефон: ##телефон_заказчика##
+
+Dear ##client_name##,
+
+Thank you for your interest in our services. We're pleased to provide you with a quote for the work discussed on ##meeting_date##.
+
+The total cost will be $##total_amount##.
+
+Sincerely,
+##your_name##
+
+
+##sfdfsdfdsf##
