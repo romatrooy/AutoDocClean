@@ -12,7 +12,7 @@ services:
       - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-      - GOOGLE_REDIRECT_URI=${GOOGLE_REDIRECT_URI}
+      - GOOGLE_REDIRECT_URI=https://${DOMAIN}/auth/callback
     depends_on:
       - db
     networks:
@@ -46,7 +46,9 @@ services:
       retries: 5
 
   nginx:
-    image: nginx:latest
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "80:80"
@@ -61,4 +63,4 @@ services:
 
 networks:
   app-network:
-    driver: bridge 
+    driver: bridge
